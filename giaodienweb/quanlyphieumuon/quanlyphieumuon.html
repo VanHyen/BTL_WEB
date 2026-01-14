@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Phiếu mượn - Hệ thống Thư viện</title>
+    <link rel="stylesheet" href="quanlyphieumuon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+
+<div class="loan-container">
+    <div class="library-header">
+        <div class="library-name">THƯ VIỆN TRUNG TÂM</div>
+        <div id="form-title" class="form-title">THÔNG TIN PHIẾU MƯỢN</div>
+    </div>
+
+    <div id="loan-form-content" class="form-box">
+        <div class="loading"><i class="fas fa-spinner fa-spin"></i> Đang tải dữ liệu...</div>
+    </div>
+
+    <div id="book-selection-area" class="selection-section">
+        <h3 class="section-title"><i class="fas fa-search"></i> CHỌN SÁCH MƯỢN</h3>
+        
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <i class="fas fa-book search-icon"></i>
+                <input type="text" id="input_search_sach" 
+                       placeholder="Nhập tên sách để tìm kiếm..." 
+                       oninput="searchBookByName(this.value)"
+                       autocomplete="off">
+                
+                <div id="search-results" class="search-results"></div>
+            </div>
+        </div>
+
+        <table class="detail-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Ảnh bìa</th>
+                    <th>Tên sách</th>
+                    <th>Số lượng</th>
+                    <th>Tiền cọc/Q</th>
+                    <th>Thành tiền</th>
+                    <th>Xóa</th>
+                </tr>
+            </thead>
+            <tbody id="temp-book-body">
+                </tbody>
+        </table>
+    </div>
+
+    <div id="total-area" class="total-area">
+        <div id="total" class="total-box">Tổng tiền cọc: 0 đ</div>
+        <div id="total-text" class="money-text">Bằng chữ: Không đồng chẵn.</div>
+    </div>
+
+    <div class="footer-actions" id="action-area">
+        </div>
+</div>
+
+<script src="quanlyphieumuon.js"></script>
+
+</body>
+</html>

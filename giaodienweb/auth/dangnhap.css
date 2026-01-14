@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    /* Hiến hãy đảm bảo có file ảnh nền trong thư mục Anh */
+    background: url("../Anh/Anhnen.jpg") no-repeat center center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth {
+    width: 380px;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.auth h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.auth label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+.auth input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.auth input:focus {
+    border-color: #3498db;
+}
+
+.auth button {
+    width: 100%;
+    padding: 14px;
+    background: #2c3e50; /* Màu tối sang trọng cho thư viện */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.auth button:hover {
+    background: #34495e;
+}

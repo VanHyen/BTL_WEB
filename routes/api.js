@@ -1,49 +1,69 @@
+// routes/api.js
 import { Router } from "express";
-import { bookController } from "../controllers/book.controller.js";
-import { danhmucController } from "../controllers/danhmuc.controller.js";
-import { borrowController } from "../controllers/borrow.controller.js";
-import { userController } from "../controllers/user.controller.js";
+
+import { dangnhapController } from "../controllers/dangnhap.controller.js";
+import { theLoaiController } from "../controllers/theloai.controller.js";
+import { nhaXuatBanController } from "../controllers/nhaxuatban.controller.js";
+import { sachController } from "../controllers/sach.controller.js";
+import { phieuNhapController } from "../controllers/phieunhap.controller.js"; // Sửa lại tên file
+import { docGiaController } from "../controllers/docgia.controller.js";
+import { phieuMuonController } from "../controllers/phieumuon.controller.js";
+import { chiTietPhieuMuonController } from "../controllers/chitiet_phieumuon.controller.js";
+import { layTonKho } from "../controllers/tonkho.controller.js";
 
 const router = Router();
 
-// --- QUẢN LÝ SÁCH ---
-// Thêm tìm kiếm & thống kê (giống phần sanpham cũ)
-router.get("/book/search", bookController.getByTen); // Nên đặt trên route /book/:id
-router.get("/book/stats", bookController.getStatsByCategory); 
+// --- ĐĂNG NHẬP ---
+router.post("/dangnhap", dangnhapController.dangNhap);
 
-router.route("/book")
-    .get(bookController.getAll)
-    .post(bookController.create);
+// --- THỂ LOẠI ---
+router.get("/theloai", theLoaiController.layTatCaTheLoai);
+router.get("/theloai/:ma_the_loai", theLoaiController.layTheLoaiTheoMa);
+router.post("/theloai", theLoaiController.themTheLoai);
+router.put("/theloai/:ma_the_loai", theLoaiController.suaTheLoai);
+router.delete("/theloai/:ma_the_loai", theLoaiController.xoaTheLoai);
 
-router.route("/book/:id")
-    .get(bookController.getById)
-    .put(bookController.update)
-    .delete(bookController.delete);
+// --- NHÀ XUẤT BẢN ---
+router.get("/nhaxuatban", nhaXuatBanController.layTatCaNhaXuatBan);
+router.get("/nhaxuatban/:ma_nxb", nhaXuatBanController.layNXBTheoMa);
+router.post("/nhaxuatban", nhaXuatBanController.themNhaXuatBan);
+router.put("/nhaxuatban/:ma_nxb", nhaXuatBanController.suaNhaXuatBan);
+router.delete("/nhaxuatban/:ma_nxb", nhaXuatBanController.xoaNhaXuatBan);
 
-// --- QUẢN LÝ DANH MỤC ---
-router.get("/danhmuc", danhmucController.getAll);
-// Thêm route lấy sách theo danh mục (rất quan trọng cho thư viện)
-router.get("/danhmuc/:id/books", bookController.getByCategoryId); 
+// --- SÁCH ---
+router.get("/sach", sachController.layTatCaSach);
+router.get("/sach/:ma_sach", sachController.laySachTheoMa);
+router.get("/sach/theloai/:ma_the_loai", sachController.laySachTheoTheLoai); // Dòng 38 gây lỗi đã được fix
+router.post("/sach", sachController.themSach);
+router.put("/sach/:ma_sach", sachController.suaSach);
+router.delete("/sach/:ma_sach", sachController.xoaSach);
 
-// --- QUẢN LÝ NGƯỜI DÙNG ---
-router.route("/user")
-    .get(userController.getAll)
-    .post(userController.create);
+// --- PHIẾU NHẬP ---
+router.get("/phieunhap", phieuNhapController.layTatCaPhieuNhap);
+router.post("/phieunhap", phieuNhapController.themPhieuNhap);
+router.put("/phieunhap/:ma_pn", phieuNhapController.suaPhieuNhap);
 
-router.route("/user/:id")
-    .get(userController.getById)
-    .put(userController.update)
-    .delete(userController.delete);
+// --- ĐỘC GIẢ ---
+router.get("/docgia", docGiaController.layTatCaDocGia);
+router.get("/docgia/:ma_dg", docGiaController.layDocGiaTheoMa);
+router.post("/docgia", docGiaController.themDocGia);
+router.put("/docgia/:ma_dg", docGiaController.suaDocGia);
+router.delete("/docgia/:ma_dg", docGiaController.xoaDocGia);
 
-// --- QUẢN LÝ MƯỢN TRẢ ---
-router.route("/borrow")
-    .get(borrowController.getAll)
-    .post(borrowController.create);
+// --- PHIẾU MƯỢN ---
+router.get("/phieumuon", phieuMuonController.layTatCaPhieuMuon);
+router.get("/phieumuon/:ma_pm", phieuMuonController.layPhieuMuonTheoMa);
+router.get("/phieumuon/:ma_pm/chitiet", phieuMuonController.layChiTietPhieuMuon);
+router.post("/phieumuon", phieuMuonController.themPhieuMuon);
+router.delete("/phieumuon/:ma_pm", phieuMuonController.xoaPhieuMuon);
 
-router.route("/borrow/:id")
-    .get(borrowController.getById)
-    .put(borrowController.update); // Dùng để gia hạn hoặc đổi trạng thái thủ công
+// --- CHI TIẾT PHIẾU MƯỢN ---
+router.get("/ctpm", chiTietPhieuMuonController.layTatCaCTPhieuMuon);
+router.post("/ctpm", chiTietPhieuMuonController.themChiTietPhieuMuon);
+router.put("/ctpm/:ma_ctpm", chiTietPhieuMuonController.suaChiTietPhieuMuon);
+router.delete("/ctpm/:ma_ctpm", chiTietPhieuMuonController.xoaChiTietPhieuMuon);
 
-router.post("/borrow/:id/return", borrowController.returnBook);
+// --- TỒN KHO ---
+router.get("/tonkho", layTonKho);
 
 export default router;

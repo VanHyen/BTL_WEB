@@ -1,0 +1,132 @@
+/* ================= TỔNG THỂ ================= */
+body {
+    font-family: "Times New Roman", serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.page-container {
+    max-width: 700px; /* Độ rộng vừa phải như một hồ sơ cá nhân */
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ================= HEADER 2 CỘT ================= */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.library-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.library-info {
+    font-size: 13px;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.page-title-block {
+    text-align: right;
+}
+
+.info-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge {
+    display: inline-block;
+    background: #27ae60;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* ================= FORM THÔNG TIN ================= */
+.section-header {
+    background: #f8f9fa;
+    padding: 8px 15px;
+    font-weight: bold;
+    border-left: 4px solid #2c3e50;
+    margin-bottom: 15px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.full-width { grid-column: span 2; }
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input-group input:disabled { background: #eee; }
+
+.error { color: #e74c3c; font-size: 12px; margin-top: 3px; height: 14px; }
+
+/* ================= BẢNG LỊCH SỬ ================= */
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.history-table th, .history-table td {
+    border: 1px solid #333;
+    padding: 8px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.history-table th { background: #f2f2f2; }
+
+/* ================= NÚT HÀNH ĐỘNG ================= */
+.action-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.btn-back { padding: 8px 15px; cursor: pointer; background: #eee; border: 1px solid #ccc; }
+
+.main-actions { display: flex; gap: 10px; }
+
+.btn-save { 
+    background: #2c3e50; color: white; border: none; padding: 10px 25px; 
+    border-radius: 4px; cursor: pointer; font-weight: bold; 
+}
+
+.btn-delete { 
+    background: #e74c3c; color: white; border: none; padding: 10px 15px; 
+    border-radius: 4px; cursor: pointer; 
+}

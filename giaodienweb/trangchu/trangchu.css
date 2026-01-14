@@ -1,0 +1,337 @@
+/* ================= RESET + CÀI ĐẶT CHUNG ================= */
+:root {
+    --primary-color: #2c3e50;    /* Indigo Slate */
+    --secondary-color: #34495e;  /* Slate Grey */
+    --accent-color: #3498db;     /* Light Blue */
+    --bg-light: #f4f7f6;
+    --text-dark: #333;
+    --white: #ffffff;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-light); /* Nền sáng dịu mắt */
+    color: var(--text-dark);
+}
+
+/* ================= HEADER + BANNER ================= */
+.banner-header {
+    position: relative;
+    /* Tăng thêm 1/3 chiều cao so với gốc 100px */
+    height: 135px; 
+
+    /* Sử dụng ảnh nền bg_nlbt.webp với độ mờ vừa phải để nổi bật text */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url("../Anh/bg_nlbt.webp") center / cover no-repeat; 
+                
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    color: var(--white);
+    
+    /* Chuyển động mượt mà khi thay đổi kích thước */
+    transition: all 0.4s ease-in-out; 
+}
+
+.header-left h1 {
+    font-size: 26px;
+    margin: 0;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.header-right {
+    display: flex;
+    gap: 15px;
+}
+
+/* ================= HEADER BUTTONS ================= */
+.header-btn {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Sửa lại lỗi "nsition" thành "transition" */
+    transition: all 0.3s ease; 
+    /* Bổ sung tiền tố để tối ưu hiển thị */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); 
+}
+
+.header-btn:hover {
+    background: var(--white);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.logout-btn:hover {
+    background: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+/* ================= MENU CHỨC NĂNG (FUNCTION BAR) ================= */
+.functions {
+    background: var(--white);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.function-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 20px;
+}
+
+.function-card {
+    padding: 10px 18px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--secondary-color);
+    background: #ecf0f1;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.function-card i {
+    font-size: 16px;
+}
+
+.function-card:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+}
+
+/* ================= KHU VỰC NỘI DUNG CHÍNH (CONTENT) ================= */
+.content {
+    padding: 25px 40px;
+}
+
+.content-box {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    min-height: 450px;
+    overflow-x: auto; /* Cuộn ngang cho bảng dữ liệu lớn */
+}
+
+/* ================= BẢNG DỮ LIỆU (TABLE) ================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th {
+    background: var(--primary-color);
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    padding: 12px 10px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+}
+
+td {
+    border-bottom: 1px solid #eee;
+    padding: 12px 10px;
+    font-size: 14px;
+}
+
+tr:hover {
+    background-color: #f9fbfd;
+}
+
+/* Tùy chỉnh màu header theo bảng giống bài mẫu */
+.table-sach th { background: #2c3e50; }
+.table-docgia th { background: #2980b9; }
+.table-phieumuon th { background: #8e44ad; }
+.table-phieunhap th { background: #27ae60; }
+
+/* ================= GRID HIỂN THỊ SÁCH ================= */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 10px 0;
+}
+
+.product-card {
+    background: var(--white);
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px; /* Tăng kích thước ảnh bìa sách */
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 12px;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    border-color: var(--accent-color);
+}
+
+.product-card h4 {
+    color: var(--primary-color);
+    font-size: 16px;
+    margin: 8px 0;
+    height: 40px; /* Giới hạn dòng cho tiêu đề */
+    overflow: hidden;
+}
+
+/* ================= CÔNG CỤ TÌM KIẾM & SẮP XẾP ================= */
+.search-sort-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    position: relative;
+    width: 300px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #95a5a6;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px 10px 38px;
+    border: 1px solid #ddd;
+    border-radius: 20px; /* Bo tròn mềm mại hơn */
+    outline: none;
+    transition: border 0.3s;
+}
+
+.search-input:focus {
+    border-color: var(--accent-color);
+}
+
+/* ================= DROPDOWN MENU (THỐNG KÊ) ================= */
+.profit-menu {
+    position: relative;
+}
+
+.profit-submenu {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    width: 200px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 8px 0;
+    opacity: 0;
+    transform: translateY(15px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.profit-menu:hover .profit-submenu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.profit-item {
+    padding: 12px 20px;
+    font-size: 14px;
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profit-item:hover {
+    background: var(--bg-light);
+    color: var(--accent-color);
+}
+
+/* ================= TIỆN ÍCH KHÁC ================= */
+.code-cell {
+    color: var(--accent-color);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.tooltip {
+    display: none; /* Hiển thị tooltip chuyên nghiệp khi hover */
+}
+
+.welcome-msg {
+    text-align: center;
+    color: #7f8c8d;
+    margin-top: 100px;
+}
+
+/* ================= NÚT THÊM MỚI CHUNG ================= */
+.add-btn {
+    background: #27ae60; /* Màu xanh lá chuyên dụng cho nút Thêm */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px; /* Bo tròn đồng bộ với thanh tìm kiếm */
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(39, 174, 96, 0.2);
+}
+
+.add-btn:hover {
+    background: #2ecc71;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(39, 174, 96, 0.3);
+}
+
+.add-btn i {
+    font-size: 16px;
+}

@@ -1,0 +1,108 @@
+/* ================= TỔNG THỂ ================= */
+:root {
+    --primary-indigo: #2c3e50;
+    --accent-blue: #3498db;
+    --error-red: #e74c3c;
+    --bg-gray: #f5f6fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 50px;
+    background: var(--bg-gray);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+/* ================= BỐ CỤC CHI TIẾT ================= */
+.nxb-detail-wrapper {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    max-width: 900px;
+}
+
+/* Ảnh NXB */
+.nxb-image-section img {
+    width: 350px;
+    height: 350px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: #fff;
+    object-fit: contain;
+    padding: 20px;
+}
+
+/* Thẻ thông tin */
+.nxb-info-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    width: 420px;
+}
+
+.nxb-info-card h2 {
+    margin: 0 0 25px 0;
+    color: var(--primary-indigo);
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Input và Label */
+.info-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.info-row b { font-size: 14px; color: #555; }
+
+.info-row input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.info-row input:focus { border-color: var(--accent-blue); }
+.info-row input:disabled { background: #f9f9f9; color: #888; }
+
+.error {
+    color: var(--error-red);
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 15px;
+}
+
+/* NÚT HÀNH ĐỘNG */
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    flex: 1;
+}
+
+.btn-back { background: #bdc3c7; color: #333; }
+.btn-save { background: var(--primary-indigo); color: white; }
+
+button:hover { opacity: 0.9; transform: translateY(-1px); }
+button:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
+.loading-state { text-align: center; padding: 50px; color: #7f8c8d; }

@@ -1,73 +1,121 @@
-## ⛩ **NodeJS Starter**
+📚 API DOCUMENTATION - HỆ THỐNG QUẢN LÝ THƯ VIỆN
+1. THÔNG TIN CHUNG
+Base URL: http://localhost:3000/api
 
-### **`About this repository 😎`**
-This repository talks about how to build an outstanding web server using latest Javascript technologies that can help micro entrepreneurs swiftly reach economic freedom.
+Format: JSON
 
-### **`Engine Requirement 🚜`**
-```
-  -- Node.js v16.x or v18.x
-  -- NPM v8+
-```
+Database: BTL_QuanLyThuVien
 
-### **`Technology Stacks 🍔`**
-```
-  -- Node.js
-  -- Koa.js (Express.js Godfather) 🔥🔥
-  -- Morgan (for logging purposes)
-  -- Mongodb 💾
-```
+2. DANH SÁCH ENDPOINTS
+🟢 GET (Lấy dữ liệu)
+Thể loại & Nhà xuất bản:
 
-### **`Project Structures 🏢`**
-```
-.
-│── README.md
-│── .env.example  (this will be the environment file)
-|── .gitignore
-|── package.json
-|── index.js     (entry point)
-└── controllers/
-|   └── ...[.js]
-└── helpers/
-|   └── ...[.js]
-└── libraries/
-|   └── ...[.js]
-└── middlewares/
-|   └── ...[.js]
-└── repositories/
-|   └── ...[.js]
-└── routes/
-|   └── ...[.js]
-└── services/
-|   └── ...[.js] (db connection or third party api)
-```
+Lấy tất cả thể loại: GET /theloai
 
-### **`Install Localy 🧑🏼‍🔧`**
-1. install dependency. `npm install`  
-1. copy .env.example and rename it into .env (`cp .env.example .env`)
-1. ajust config in .env
+Lấy thể loại theo mã: GET /theloai/:ma_the_loai
 
-### **`Running App 👟`**
-`npm start`  
+Lấy tất cả nhà xuất bản: GET /nhaxuatban
 
-### **`Flow Development 🏗`**
-During the development cycle, a variety of supporting branches are used:  
+Lấy nhà xuất bản theo mã: GET /nhaxuatban/:ma_nxb
 
-- feature/* -- feature branches are used to develop new features for the upcoming releases. May branch off from develop and must merge into develop.
-- hotfix/* -- hotfix branches are necessary to act immediately upon an undesired status of master. May branch off from master and must merge into master and develop.
+Sách:
 
-Creating a new feature  
+Lấy tất cả sách: GET /sach
 
-1. create new branch from master. ex: `feature/name-of-feature`.
-1. write your code.
-1. don't forget to run `npm run lint` to check standardize code or `npm run lintfix` to auto fix non-standard code.
-1. commit & push your work to the same named branch on the server.
-1. create PR into development branch for testing in dev server.
-1. if its pre-production ready then create PR from the same branch into staging. **DON'T PR FROM DEVELOPMENT BRANCH!**
-1. if ready to production then create PR from the same branch into master/production. **DON'T PR FROM DEVELOPMENT BRANCH OR STAGING!**
+Lấy chi tiết một cuốn sách: GET /sach/:ma_sach
 
-### **`Deployment 🚀`**
-This flow of deployment using Git Flow with 3 main branches  
+Lấy sách theo mã thể loại: GET /sach/theloai/:ma_the_loai
 
-- master -- this branch contains production code. All development code is merged into master in sometime.
-- staging -- this branch is a nearly exact replica of a production environment for software testing.
-- development/dev -- this branch contains pre-production code. When the features are finished then they are merged into develop.
+Lấy sách theo nhà xuất bản: GET /sach/nhaxuatban/:ma_nxb
+
+Độc giả:
+
+Lấy tất cả độc giả: GET /docgia
+
+Lấy thông tin một độc giả: GET /docgia/:ma_dg
+
+Phiếu nhập (Sách về kho):
+
+Lấy tất cả phiếu nhập: GET /phieunhap
+
+Lấy phiếu nhập theo mã: GET /phieunhap/:ma_pn
+
+Phiếu mượn & Chi tiết (Nghiệp vụ mượn trả):
+
+Lấy tất cả phiếu mượn: GET /phieumuon
+
+Lấy phiếu mượn theo mã: GET /phieumuon/:ma_pm
+
+Lấy lịch sử mượn sách của 1 độc giả: GET /phieumuon?ma_dg=:ma_dg
+
+Lấy chi tiết sách mượn của 1 phiếu: GET /ctpm?ma_pm=:ma_pm
+
+Thống kê:
+
+Xem tồn kho thực tế: GET /tonkho
+
+Xem thống kê lượt mượn theo tháng: GET /thongke/muon?thang=01&nam=2026
+
+🔵 POST (Thêm mới)
+Thể loại: POST /theloai
+
+JSON
+
+{ "ten_the_loai": "Văn học", "mo_ta": "Sách văn học" }
+Nhà xuất bản: POST /nhaxuatban
+
+JSON
+
+{ "ten_nxb": "NXB Trẻ", "dien_thoai": "0912345678", "dia_chi": "Hà Nội", "email": "nxb@gmail.com" }
+Sách: POST /sach
+
+JSON
+
+{
+  "ten_sach": "Đắc Nhân Tâm",
+  "tac_gia": "Dale Carnegie",
+  "ma_the_loai": 1,
+  "ma_nxb": 1,
+  "gia_bia": 80000,
+  "gia_nhap": 50000,
+  "so_luong_ton": 50,
+  "mo_ta": "Sách kỹ năng sống"
+}
+Phiếu nhập: POST /phieunhap
+
+JSON
+
+{ "ma_nxb": 1, "ma_sach": 101, "ngay_nhap": "2026-01-15", "so_luong": 20, "don_gia_nhap": 50000 }
+Phiếu mượn: POST /phieumuon
+
+JSON
+
+{ "ma_dg": 1, "ngay_muon": "2026-01-15" }
+🟡 PUT (Cập nhật)
+Sửa thông tin sách: PUT /sach/:ma_sach
+
+Sửa thông tin độc giả: PUT /docgia/:ma_dg
+
+Sửa thông tin NXB: PUT /nhaxuatban/:ma_nxb
+
+Sửa thông tin thể loại: PUT /theloai/:ma_the_loai
+
+Sửa phiếu mượn: PUT /phieumuon/:ma_pm
+
+🔴 DELETE (Xóa)
+Xóa sách: DELETE /sach/:ma_sach
+
+Xóa độc giả: DELETE /docgia/:ma_dg
+
+Xóa phiếu mượn: DELETE /phieumuon/:ma_pm
+
+Xóa nhà xuất bản: DELETE /nhaxuatban/:ma_nxb
+
+Xóa thể loại: DELETE /theloai/:ma_the_loai
+
+3. LƯU Ý NGHIỆP VỤ
+Tự động hóa: Mã số (ID) của tất cả các bảng đều được thiết lập AUTO_INCREMENT, không cần gửi lên trong Body khi POST.
+
+Trigger tồn kho: Khi POST một phiếu nhập, số lượng tồn kho của sách sẽ tự động tăng. Khi POST một chi tiết phiếu mượn, số lượng tồn sẽ tự động giảm.
+
+Tiền cọc: Tổng tiền cọc trong phiếu mượn được hệ thống tự động tính dựa trên giá bìa của các cuốn sách được chọn.

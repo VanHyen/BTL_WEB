@@ -10,3 +10,4 @@ export const successResponse = (status, message, data = {}) => ({
   message,
   data,
 });
+

@@ -1,14 +1,16 @@
+// index.js
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
 import cookieParser from "cookie-parser";
+import httpErrors from "http-errors";
 
 import { requestLogger } from "./middlewares/logger.middleware.js";
 import apiRoutes from "./routes/api.js";
-import webRoutes from "./routes/web.js";
 import { logger } from "./config/logger.js";
+import { pool } from "./config/database.js"; // Đảm bảo kết nối DB được khởi tạo
 
 dotenv.config();
 
@@ -34,15 +36,14 @@ app.use(requestLogger);
 // ---------------------------
 
 app.use("/api", apiRoutes);
-app.use("/", webRoutes);
+// Root path cho kiểm tra cơ bản
+app.use("/", (req, res) => res.send('API Server is running. Check /api/sanphams.')); 
 
 // ---------------------------
 // 404 Handler
 // ---------------------------
 app.use((req, res, next) => {
-  res.status(404).json({
-    message: "Route not found",
-  });
+  next(httpErrors(404, "Route not found"));
 });
 
 // ---------------------------

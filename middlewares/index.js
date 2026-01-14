@@ -10,6 +10,7 @@ export const middlewareErrorWrapper = async (req, res, next) => {
       res.status(500).json(errorResponse(500, err.message));
     }
   }
+  
 };
 
 // Bắt buộc Content-Type là JSON

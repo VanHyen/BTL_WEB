@@ -1,0 +1,246 @@
+/* ================= BIẾN MÀU SẮC ĐỒNG BỘ ================= */
+:root {
+    --primary-color: #2c3e50;    /* Indigo Slate */
+    --secondary-color: #34495e;  /* Slate Grey */
+    --accent-color: #3498db;     /* Blue */
+    --success-color: #27ae60;    /* Green */
+    --error-color: #e74c3c;      /* Red */
+    --bg-light: #f8f9fa;         /* Light grey background */
+    --white: #ffffff;
+}
+
+body {
+    font-family: "Times New Roman", serif; /* Giữ font serif cho văn bản hành chính */
+    background: var(--bg-light);
+    margin: 0;
+    padding: 30px;
+}
+
+/* ================= CONTAINER PHIẾU NHẬP ================= */
+.phieu-container {
+    width: 900px; /* Độ rộng chuẩn của chứng từ */
+    margin: 0 auto;
+    background: var(--white);
+    padding: 40px;
+    border: 2px solid #333; /* Viền đen tạo cảm giác trang trọng */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ================= HEADER 3 CỘT ================= */
+.header-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+.header-table td {
+    border: 1px solid black; /* */
+    padding: 15px;
+    vertical-align: middle;
+}
+
+.header-left {
+    width: 30%;
+    text-align: center;
+}
+
+.library-name {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.department {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.header-center {
+    width: 40%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.header-right {
+    width: 30%;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.input-date {
+    border: none;
+    border-bottom: 1px dashed #333;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+/* ================= THÔNG TIN NHÀ XUẤT BẢN ================= */
+.nxb-info-row {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nxb-info-row input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    width: 250px;
+}
+
+/* ================= TÌM KIẾM SÁCH ================= */
+.selection-section {
+    margin-top: 30px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    background: #fdfdfd;
+}
+
+.section-title {
+    font-size: 17px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.search-input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#input_search_sach {
+    width: 100%;
+    padding: 12px 40px;
+    font-size: 15px;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.search-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-item:hover { background: #eef6ff; }
+
+/* ================= BẢNG CHI TIẾT ================= */
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.detail-table th, .detail-table td {
+    border: 1px solid black; /* */
+    padding: 10px;
+    text-align: center;
+}
+
+.detail-table th {
+    background: #f2f2f2;
+    font-weight: bold;
+}
+
+.detail-table img {
+    width: 50px;
+    height: 70px;
+    object-fit: cover;
+}
+
+.detail-table input[type="number"] {
+    width: 70px;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+/* ================= TỔNG TIỀN ================= */
+.total-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 20px;
+    padding-top: 15px;
+}
+
+.total-right {
+    text-align: right;
+}
+
+.total-money {
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+.total-text {
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* ================= HÀNH ĐỘNG ================= */
+.footer-actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.save-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.save-btn:hover {
+    background: var(--success-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+}
+
+.back-btn {
+    padding: 8px 15px;
+    background: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* In ấn */
+@media print {
+    .search-container, .footer-actions, .back-btn { display: none; }
+    .phieu-container { border: none; width: 100%; margin: 0; }
+}

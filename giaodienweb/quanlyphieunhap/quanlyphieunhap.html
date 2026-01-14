@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phiếu nhập sách - Hệ thống Thư viện</title>
+  <link rel="stylesheet" href="quanlyphieunhap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+
+<div class="phieu-container">
+  <table class="header-table">
+    <tr>
+      <td class="header-left">
+        <div class="library-name">THƯ VIỆN TRUNG TÂM</div>
+        <div class="department">Bộ phận: Quản lý kho</div>
+      </td>
+
+      <td class="header-center">
+        PHIẾU NHẬP SÁCH
+      </td>
+
+      <td class="header-right">
+        <div>Mã phiếu: <span id="ma-phieu">Tự động tăng</span></div>
+        <div>Ngày nhập: <input type="date" id="ngay-nhap" class="input-date"></div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="nxb-info-row">
+    <b>Nhà xuất bản (ID):</b>
+    <input type="number" id="ma_nxb" placeholder="Nhập ID nhà xuất bản...">
+    <div id="e_ma_nxb" class="error"></div>
+  </div>
+
+  <div class="selection-section">
+    <h3 class="section-title"><i class="fas fa-search"></i> CHỌN SÁCH ĐỂ NHẬP</h3>
+    
+    <div class="search-container">
+        <div class="search-input-wrapper">
+            <i class="fas fa-book search-icon"></i>
+            <input type="text" id="input_search_sach" 
+                   placeholder="Nhập tên sách cần nhập hàng..." 
+                   oninput="searchBookByName(this.value)"
+                   autocomplete="off">
+            
+            <div id="search-results" class="search-results"></div>
+        </div>
+    </div>
+
+    <table class="detail-table">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Ảnh bìa</th>
+          <th>Tên sách</th>
+          <th>Số lượng</th>
+          <th>Giá nhập/Q</th>
+          <th>Thành tiền</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="detail-body">
+        </tbody>
+    </table>
+  </div>
+
+  <div class="total-area">
+    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Trở về</button>
+
+    <div class="total-right">
+      <div class="total-money">
+        Tổng tiền nhập: <span id="total">0 đ</span>
+      </div>
+      <div class="total-text" id="total-text">Bằng chữ: Không đồng chẵn.</div>
+    </div>
+  </div>
+
+  <div class="footer-actions">
+    <button id="btn_save_phieu" class="save-btn" onclick="savePhieuNhap()">
+        <i class="fas fa-save"></i> HOÀN TẤT NHẬP KHO
+    </button>
+  </div>
+</div>
+
+<script src="quanlyphieunhap.js"></script>
+</body>
+</html>

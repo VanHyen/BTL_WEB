@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hệ Thống Quản Lý Thư Viện</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="trangchu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<body>
+
+<header class="header banner-header">
+    <div class="header-left">
+        <h1>THƯ VIỆN TRUNG TÂM</h1>
+    </div>
+
+    <div class="header-right">
+        <button class="header-btn" data-type="tonkho">
+            <i class="fa-solid fa-warehouse"></i> Tồn kho sách
+        </button>
+
+        <div class="profit-menu">
+            <div class="header-btn profit-btn no-click">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Thống kê</span>
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </div>
+
+            <div class="profit-submenu">
+                <div class="profit-item" data-type="thongke-thang">
+                    <i class="fa-regular fa-calendar-check"></i> Theo tháng
+                </div>
+                <div class="profit-item" data-type="thongke-sach">
+                    <i class="fa-solid fa-book-open"></i> Theo đầu sách
+                </div>
+            </div>
+        </div>
+
+        <button class="header-btn logout-btn" onclick="dangXuat()">
+            <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+        </button>
+    </div>
+</header>
+
+<section class="functions">
+    <div class="function-bar">
+        <div class="function-card" data-type="sach"><i class="fa-solid fa-book"></i> SÁCH</div>
+        <div class="function-card" data-type="theloai"><i class="fa-solid fa-layer-group"></i> THỂ LOẠI</div>
+        <div class="function-card" data-type="nhaxuatban"><i class="fa-solid fa-landmark"></i> NHÀ XUẤT BẢN</div>
+        <div class="function-card" data-type="docgia"><i class="fa-solid fa-users"></i> ĐỘC GIẢ</div>
+        <div class="function-card" data-type="phieunhap"><i class="fa-solid fa-file-import"></i> PHIẾU NHẬP</div>
+        <div class="function-card" data-type="phieumuon"><i class="fa-solid fa-clipboard-list"></i> PHIẾU MƯỢN</div>
+        <div class="function-card" data-type="ctpm"><i class="fa-solid fa-circle-info"></i> CHI TIẾT MƯỢN</div>
+    </div>
+</section>
+
+<section class="content">
+    <div id="table-area" class="content-box">
+        <div class="welcome-msg">
+            <i class="fa-solid fa-book-reader fa-3x" style="margin-bottom: 20px;"></i>
+            <p>Chào mừng quản trị viên hệ thống thư viện.</p>
+            <p>Vui lòng chọn một chức năng ở thanh menu trên để bắt đầu quản lý dữ liệu.</p>
+        </div>
+    </div>
+</section>
+
+<script src="trangchu.js"></script>
+
+<script>
+    // Hàm đăng xuất đơn giản
+    function dangXuat() {
+        if(confirm("Bạn có chắc chắn muốn đăng xuất?")) {
+            localStorage.clear();
+            window.location.href = "../auth/dangnhap.html";
+        }
+    }
+</script>
+
+</body>
+</html>
